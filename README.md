@@ -1,6 +1,6 @@
 # MTCNN face recognition
 
-Implementation of the [MTCNN face detection algorithm](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7553523). This project converted the code from [ipazc/mtcnn](https://github.com/ipazc/mtcnn) to TF Lite.
+Implementation of the [MTCNN face detection algorithm](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7553523). This project converted the code from [ipazc/mtcnn](https://github.com/ipazc/mtcnn) to TF Lite. My iteration takes the code a little further by enabling a feature to download and load a saved `tflite` model. This enable the ability to use `MTCNN` in a mobile environment.
 
 ## Installation
 
