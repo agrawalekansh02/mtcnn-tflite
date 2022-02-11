@@ -33,6 +33,8 @@ import pkg_resources
 import os
 
 import mtcnn_tflite
+from mtcnn_tflite.ModelGenerator import ModelGenerator
+from mtcnn_tflite.ModelLoader import ModelLoader
 from mtcnn_tflite.exceptions import InvalidImage
 from mtcnn_tflite.ModelBuilder import ModelBuilder
 
@@ -64,7 +66,7 @@ class MTCNN(object):
     """
 
     def __init__(self, min_face_size: int = 20, steps_threshold: list = None,
-                 scale_factor: float = 0.709):
+                 scale_factor: float = 0.709, load: bool = False):
         """
         Initializes the MTCNN.
         :param min_face_size: minimum size of the face to detect
@@ -79,12 +81,26 @@ class MTCNN(object):
         self._min_face_size = min_face_size
         self._steps_threshold = steps_threshold
         self._scale_factor = scale_factor
-
-        self.builder = ModelBuilder()
-        self._rnetlite, self._onetlite = self.builder.get_r_o_networks()
+        # if not load:
+        #     self.builder = ModelBuilder()
+        #     self._rnetlite, self._onetlite = self.builder.get_r_o_networks()
         
+        #     self._rnetlite.allocate_tensors()
+        #     self._onetlite.allocate_tensors()
+        # else:
+        #     self.builder
+
+    def generate(self):
+        self.builder = ModelGenerator()
+
+    def load(self):
+        self.builder = ModelLoader()
+        self._rnetlite, self._onetlite = self.builder.get_r_o_networks()
         self._rnetlite.allocate_tensors()
         self._onetlite.allocate_tensors()
+
+
+
 
     @property
     def min_face_size(self):

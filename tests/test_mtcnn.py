@@ -1,7 +1,7 @@
 import unittest
 import cv2
 
-from mtcnn_tflite.exceptions import InvalidImage
+#from mtcnn_tflite.exceptions import InvalidImage
 from mtcnn_tflite.MTCNN import MTCNN
 
 mtcnn = None
